@@ -44,10 +44,14 @@ the last step is to create an alias for the git repository
 ```
 echo "alias config='$(which git) --git-dir=<path/to/repository> --work-tree=\$HOME'" >> ~/.bash_local
 ```
+```
+echo "alias config='$(which git) --git-dir=<path/to/repository> --work-tree=\$HOME'" >> ~/.zsh_local
+```
+
 
 finally supress untracked files
 
 ```
-config config --local setup.showUntrackedFiles no
+config config --local status.showUntrackedFiles no
 ```
 
