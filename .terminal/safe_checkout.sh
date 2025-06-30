@@ -1,0 +1,30 @@
+#!/bin/bash
+
+set -e
+
+GIT_DIR="$HOME/utils/terminal-setup"
+WORK_TREE="$HOME"
+BACKUP_DIR="$HOME/.backup/$(date +%Y%m%d_%H%M%S)"
+
+mkdir -p "$BACKUP_DIR"
+
+# check for files to back up
+FILES_TO_BACKUP=$(git --git-dir="$GIT_DIR" --work-tree="$WORK_TREE" checkout --dry-run "$1" 2>&1 | \
+    grep -E '^\s+' | sed 's/^\s*//')
+
+if [ -z "$FILES_TO_BACKUP" ]; then
+    echo "no files to backup"
+else
+    echo "saving backup files to $BACKUP_DIR:"
+    echo "$FILES_TO_BACKUP"
+    for file in $FILES_TO_BACKUP; do
+        if [ -f "$WORK_TREE/$file" ] || [ -d "$WORK_TREE/$file" ]; then
+            mkdir -p "$BACKUP_DIR/$(dirname "$file")"
+            mv "$WORK_TREE/$file" "$BACKUP_DIR/$file"
+        fi
+    done
+fi
+
+# perform checkout
+git --git-dir="$GIT_DIR" --work-tree="$WORK_TREE" checkout "$1"
+
