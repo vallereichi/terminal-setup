@@ -1,12 +1,12 @@
 ## setup new terminal
 
-'''
+```
 git clone git@github.com:vallereichi/terminal-setup.git
-'''
+```
 
 run the shell script for safe checkout. This will backup existing .dotfiles 
 
-'''
+```
 #!/bin/bash
 
 set -e
@@ -53,20 +53,21 @@ fi
 
 # perform checkout
 git --git-dir="$GIT_DIR" --work-tree="$WORK_TREE" checkout "$1"
+```
 
-Then source the newly created '''.bashrc''' or '''.zshrc''' file
+Then source the newly created ```.bashrc``` or ```.zshrc``` file
 
-'''
+```
 source ~/.bashrc
-'''
+```
 
-'''
+```
 source ~/.zshrc
-'''
+```
 
 finally supress untracked files
 
-'''
+```
 config config --local setup.showUntrackedFiles no
-'''
+```
 

@@ -2,7 +2,24 @@
 
 set -e
 
-GIT_DIR="$HOME/utils/terminal-setup"
+
+# show help
+usage() {
+  echo "Verwendung: $0 -r <git-dir> -b <branch>"
+  exit 1
+}
+
+# parse arguments
+while getopts ":r:b:" opt; do
+  case $opt in
+    r) GIT_DIR="$OPTARG" ;;
+    b) BRANCH="$OPTARG" ;;
+    *) usage ;;
+  esac
+done
+
+
+
 WORK_TREE="$HOME"
 BACKUP_DIR="$HOME/.backup/$(date +%Y%m%d_%H%M%S)"
 

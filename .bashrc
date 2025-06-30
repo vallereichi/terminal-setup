@@ -1,5 +1,5 @@
 # sync bare git repository
-alias config='/usr/bin/git  --git-dir=$HOME/utils/terminal-setup --work-tree=$HOME'
+alias config='/usr/bin/git  --git-dir=$HOME/utils/terminal-setup.git --work-tree=$HOME'
 
 
 # configure input line
