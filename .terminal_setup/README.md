@@ -55,3 +55,27 @@ finally supress untracked files
 config config --local status.showUntrackedFiles no
 ```
 
+## install tmux
+
+```
+mkdir -p ~/.config/tmux/plugins/catppuccin
+git clone -b v2.1.3 https://github.com/catppuccin/tmux.git ~/.config/tmux/plugins/catppuccin/tmux
+```
+
+## install neovim
+
+clone the git repository
+
+```
+git clone https://github.com/neovim/neovim.git
+```
+
+run the following command from the cloned repository. This will build and install neovim in the ```$HOME/neovim``` folder and add it to ```PATH```
+
+```
+rm -r build/  
+make CMAKE_EXTRA_FLAGS="-DCMAKE_INSTALL_PREFIX=$HOME/neovim -DCMAKE_BUILD_TYPE=Release"
+make install
+export PATH="$HOME/neovim/bin:$PATH"
+```
+
