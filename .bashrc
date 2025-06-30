@@ -1,7 +1,3 @@
-# sync bare git repository
-alias config='/usr/bin/git  --git-dir=$HOME/utils/terminal-setup.git --work-tree=$HOME'
-
-
 # configure input line
 parse_git_branch() {
     branch=$(git branch 2> /dev/null | grep '*' | sed 's/* //')
@@ -30,8 +26,7 @@ alias gs='git status'
 alias ga='git add .'
 alias gm='git commit'
 
-# exports
-export PATH="$PATH:/opt/nvim-linux-x86_64/bin"
-
+# create links to system specific options, e.g. exports
+[ -f "$HOME/.bash_local" ] && source "$HOME/.bash_local"
 
 

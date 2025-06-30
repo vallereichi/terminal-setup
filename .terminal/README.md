@@ -65,6 +65,23 @@ source ~/.bashrc
 source ~/.zshrc
 ```
 
+
+it is useful to create a file is not tracked by this repo but will be loaded from the bashrc file. Here you can add exports and other things that are local to a system
+
+```
+touch ~/.bash_local
+```
+
+```
+touch ~/.zsh_local
+```
+
+the last step is to create an alias for the git repository
+
+```
+echo "alias config='$(which git) --git-dir=<path/to/repository> --work-tree=$HOME'" >> ~/.bash_local
+```
+
 finally supress untracked files
 
 ```
