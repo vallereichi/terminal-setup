@@ -25,6 +25,7 @@ alias la='ls -la'
 alias gs='git status'
 alias ga='git add .'
 alias gm='git commit'
+alias gp='git pull'
 
 # create links to system specific options, e.g. exports
 [ -f "$HOME/.bash_local" ] && source "$HOME/.bash_local"
