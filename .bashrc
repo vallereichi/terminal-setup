@@ -5,7 +5,19 @@ parse_git_branch() {
         echo -e "\e[32m($branch)"
     fi
 }
-PS1='\[\e[90m\][\t] \[\e[38;5;202m\]\u@\h $(parse_git_branch) \[\e[36m\]\W\[\e[35m\] ➜ \[\e[0m\]'
+# select the prompt color for teh username basesd on the user
+set_user_color() {
+	case "$USER" in
+		vreich)
+			echo -e "\e[38;5;174m"	# LightPink3
+			;;
+		*)
+			echo -e "\e[38;5;141m"	# MediumPurple1
+			;;
+	esac
+}
+PS1='\[\e[90m\][\t] $(set_user_color)\u@\h $(parse_git_branch) \[\e[36m\]\W\[\e[35m\] ➜ \[\e[0m\]'
+PS2='>'
 
 
 # add color support to ls
