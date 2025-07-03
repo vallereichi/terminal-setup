@@ -33,6 +33,11 @@ alias ls='ls -G --color=auto'
 # add color support to grep
 alias grep='grep -G --color=auto'
 
+# choose to use neovim instead of vim
+if command -v nvim >/dev/null 2>&1; then
+	alias vim='nvim'
+fi
+
 # aliases
 alias ll='ls -l'
 alias la='ls -la'
@@ -42,7 +47,4 @@ alias gm='git commit'
 alias ba='cd ~/Desktop/Studium/Physik/BA'
 
 # exports
-export PATH="/Users/v.reichi/Library/Python/3.9/bin:$PATH"
-export PATH="/opt/homebrew/opt/hdf5@1.10/bin:$PATH"
-export PATH="/usr/local/bin/python3:$PATH"
-
+[ -f "$HOME/.zsh_local" ] && source "$HOME/.zsh_local"
