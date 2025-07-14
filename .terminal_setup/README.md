@@ -42,10 +42,10 @@ touch ~/.zsh_local
 the last step is to create an alias for the git repository
 
 ```
-echo "alias config='$(which git) --git-dir=<path/to/repository> --work-tree=\$HOME'" >> ~/.bash_local
+echo "alias config='$(which git) --git-dir=$HOME/.terminal_setup --work-tree=\$HOME'" >> ~/.bash_local
 ```
 ```
-echo "alias config='$(which git) --git-dir=<path/to/repository> --work-tree=\$HOME'" >> ~/.zsh_local
+echo "alias config='$(which git) --git-dir=$HOME/.terminal_setup --work-tree=\$HOME'" >> ~/.zsh_local
 ```
 
 
@@ -63,6 +63,12 @@ git clone -b v2.1.3 https://github.com/catppuccin/tmux.git ~/.config/tmux/plugin
 ```
 
 ## install neovim
+
+prerequisits:
+
+```
+sudo apt-get install ninja-build gettext cmake curl build-essential
+```
 
 clone the git repository
 
