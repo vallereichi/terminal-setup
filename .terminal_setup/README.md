@@ -42,10 +42,10 @@ touch ~/.zsh_local
 the last step is to create an alias for the git repository
 
 ```
-echo "alias config='$(which git) --git-dir=$HOME/.terminal_setup --work-tree=\$HOME'" >> ~/.bash_local
+echo 'alias config="$(which git) --git-dir=$HOME/.terminal_setup --work-tree=$HOME"' >> ~/.bash_local
 ```
 ```
-echo "alias config='$(which git) --git-dir=$HOME/.terminal_setup --work-tree=\$HOME'" >> ~/.zsh_local
+echo 'alias config="$(which git) --git-dir=$HOME/.terminal_setup --work-tree=$HOME"' >> ~/.zsh_local
 ```
 
 
