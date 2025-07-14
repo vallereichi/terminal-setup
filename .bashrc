@@ -38,6 +38,12 @@ alias gs='git status'
 alias ga='git add .'
 alias gm='git commit'
 alias gp='git pull'
+alias tm='tmux has-session -t base 2>/dev/null && tmux attach-session -t base || tmux new-session -s base'
+
+# directly attach to base tmux session
+if command -v tmux >/dev/null 2>&1; then
+	tm
+fi
 
 # create links to system specific options, e.g. exports
 [ -f "$HOME/.bash_local" ] && source "$HOME/.bash_local"
