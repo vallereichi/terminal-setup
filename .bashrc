@@ -31,6 +31,7 @@ if command -v nvim >/dev/null 2>&1; then
 	alias vim='nvim'
 fi
 
+
 # aliases
 alias ll='ls -l'
 alias la='ls -la'
@@ -38,11 +39,21 @@ alias gs='git status'
 alias ga='git add .'
 alias gm='git commit'
 alias gp='git pull'
-alias tm='tmux has-session -t base 2>/dev/null && tmux attach-session -t base || tmux new-session -s base'
+
 
 # directly attach to base tmux session
 if command -v tmux >/dev/null 2>&1; then
-	tm
+	if [ "$TMUX" ]; then
+		current_session=$(tmux display-message -p '#S' 2>/dev/null)
+		if [ "$current_session" = "base" ]; then
+			return
+		fi
+	fi
+	if tmux has-session -t base 2>/dev/null; then
+		tmux attach-session -t base
+	else
+		tmux new-session -s base
+	fi
 fi
 
 # create links to system specific options, e.g. exports
