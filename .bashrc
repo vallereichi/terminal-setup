@@ -16,7 +16,7 @@ set_user_color() {
 			;;
 	esac
 }
-PS1='\[\e[90m\][\t] $(set_user_color)\u@\h $(parse_git_branch) \[\e[36m\]\W\[\e[35m\] ➜ \[\e[0m\]'
+PS1='\[\e[90m\][\t] \[$(set_user_color)\]\u@\h $(parse_git_branch) \[\e[36m\]\W\[\e[35m\] ➜ \[\e[0m\]'
 PS2='>'
 
 
