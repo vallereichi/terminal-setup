@@ -43,18 +43,30 @@ alias gp='git pull'
 
 # directly attach to base tmux session
 if command -v tmux >/dev/null 2>&1; then
-	if [ "$TMUX" ]; then
-		current_session=$(tmux display-message -p '#S' 2>/dev/null)
-		if [ "$current_session" = "base" ]; then
-			return
-		fi
-	fi
-	if tmux has-session -t base 2>/dev/null; then
-		tmux attach-session -t base
-	else
-		tmux new-session -s base
-	fi
+    if [ -z "$TMUX" ]; then
+        parent="$(ps -o comm= $PPID)"
+        if [ "$parent" != "tmux" ]; then
+            if tmux has-session -t base 2>/dev/null; then
+                tmux attach-session -t base
+            else
+                tmux new-session -s base
+            fi
+        fi
+    fi
 fi
+
+# create new tmux session
+tm() {
+	read -p "new session: " session
+	[ -z "$session" ] && return
+
+	if tmux has-session -t "$session" 2>/dev/null; then
+		tmux switch-client -t "$session"
+	else
+		tmux new-session -d -s "$session"
+		tmux switch-client -t "$session"
+	fi
+}
 
 # create links to system specific options, e.g. exports
 [ -f "$HOME/.bash_local" ] && source "$HOME/.bash_local"
