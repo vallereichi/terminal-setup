@@ -39,34 +39,7 @@ alias gs='git status'
 alias ga='git add .'
 alias gm='git commit'
 alias gp='git pull'
-
-
-# directly attach to base tmux session
-if command -v tmux >/dev/null 2>&1; then
-    if [ -z "$TMUX" ]; then
-        parent="$(ps -o comm= $PPID)"
-        if [ "$parent" != "tmux" ]; then
-            if tmux has-session -t base 2>/dev/null; then
-                tmux attach-session -t base
-            else
-                tmux new-session -s base
-            fi
-        fi
-    fi
-fi
-
-# create new tmux session
-tm() {
-	read -p "new session: " session
-	[ -z "$session" ] && return
-
-	if tmux has-session -t "$session" 2>/dev/null; then
-		tmux switch-client -t "$session"
-	else
-		tmux new-session -d -s "$session"
-		tmux switch-client -t "$session"
-	fi
-}
+alias tm='tmux a'
 
 # create links to system specific options, e.g. exports
 [ -f "$HOME/.bash_local" ] && source "$HOME/.bash_local"
