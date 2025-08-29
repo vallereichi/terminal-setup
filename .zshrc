@@ -41,6 +41,7 @@ fi
 # aliases
 alias ll='ls -l'
 alias la='ls -la'
+alias gp='git pull'
 alias gs='git status'
 alias ga='git add .'
 alias gm='git commit'
