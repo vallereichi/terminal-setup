@@ -45,3 +45,5 @@ alias tm='tmux a'
 [ -f "$HOME/.bash_local" ] && source "$HOME/.bash_local"
 
 
+
+
